@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Markdown to Textile Converter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Markdown to Textile Converter</h2>
+    
+    <div class="form-group">
+      <label for="markdown-input">Markdown:</label>
+      <textarea id="markdown-input" rows="8" placeholder="Enter Markdown text here..."></textarea>
+    </div>
+    
+    <div class="button-group">
+      <button id="convert-btn">Convert</button>
+      <button id="copy-btn" disabled>Copy to Clipboard</button>
+      <button id="clear-btn">Clear</button>
+    </div>
+    
+    <div class="form-group">
+      <label for="textile-output">Textile:</label>
+      <textarea id="textile-output" rows="8" readonly></textarea>
+    </div>
+    
+    <div id="status-message" class="status-message"></div>
+  </div>
+  
+  <script src="../markdown-to-textile.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
