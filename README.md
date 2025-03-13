@@ -29,7 +29,7 @@ Visit the [Add-on page](https://addons.mozilla.org/de/firefox/addon/markdown-to-
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/markdown-to-textile.git
+   git clone https://github.com/dkd-dobberkau/markdown-to-textile.git
    ```
 
 2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`
