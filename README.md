@@ -23,7 +23,7 @@ A Firefox extension that allows you to easily convert Markdown text to Textile f
 
 ### From Firefox Add-ons (Recommended)
 
-Visit the [Add-on page](link-to-your-addon) and click "Add to Firefox"
+Visit the [Add-on page](https://addons.mozilla.org/de/firefox/addon/markdown-to-textile-converter/) and click "Add to Firefox"
 
 ### Manual Installation (Development)
 
