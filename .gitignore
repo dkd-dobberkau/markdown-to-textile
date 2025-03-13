@@ -1,0 +1,34 @@
+# Verzeichnis node_modules ignorieren
+node_modules/
+
+# Die Datei .DS_Store ignorieren
+.DS_Store
+
+# Ignorieren Sie alle Log-Dateien
+*.log
+
+# Schlüssel ignorieren
+*.pem
+
+# Ignorieren Sie alle lokal erstellten Konfigurationsdateien
+local-config.*
+
+# Ignorieren Sie den Ordner /.vscode falls existent
+.vscode/
+
+# Ignorieren Sie alle .env Dateien
+*.env
+
+# Ignorieren Sie den build Ordner
+/dist
+/build
+
+# Ignorieren Sie den npm debug log
+npm-debug.log*
+
+# Ignorieren Sie IDE/Editor spezifische Dateien
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+*.sw?
