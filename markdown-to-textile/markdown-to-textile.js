@@ -34,8 +34,11 @@ class MarkdownToTextile {
       
       // Code blocks
       { pattern: /```(\w+)?\n([\s\S]+?)\n```/gm, replacement: function(match, lang, code) {
-        lang = lang || '';
-        return '<pre><code' + (lang ? ' class="' + lang + '"' : '') + '>\n' + code + '\n</code></pre>';
+        if (lang) {
+          return `bc(${lang}). ${code.trim()}\n`;
+        } else {
+          return `bc. ${code.trim()}\n`;
+        }
       }},
       
       // Blockquotes
