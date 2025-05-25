@@ -5,12 +5,12 @@ class MarkdownToTextile {
   constructor() {
     this.rules = [
       // Headers
-      { pattern: /^# (.+)$/gm, replacement: 'h1. $1' },
-      { pattern: /^## (.+)$/gm, replacement: 'h2. $1' },
-      { pattern: /^### (.+)$/gm, replacement: 'h3. $1' },
-      { pattern: /^#### (.+)$/gm, replacement: 'h4. $1' },
-      { pattern: /^##### (.+)$/gm, replacement: 'h5. $1' },
-      { pattern: /^###### (.+)$/gm, replacement: 'h6. $1' },
+      { pattern: /^# (.+)$/gm, replacement: 'h1. $1\n' },
+      { pattern: /^## (.+)$/gm, replacement: 'h2. $1\n' },
+      { pattern: /^### (.+)$/gm, replacement: 'h3. $1\n' },
+      { pattern: /^#### (.+)$/gm, replacement: 'h4. $1\n' },
+      { pattern: /^##### (.+)$/gm, replacement: 'h5. $1\n' },
+      { pattern: /^###### (.+)$/gm, replacement: 'h6. $1\n' },
       
       // Emphasis
       { pattern: /\*\*([^*]+)\*\*/g, replacement: '*$1*' },  // Bold
