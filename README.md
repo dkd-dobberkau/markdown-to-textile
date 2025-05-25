@@ -60,26 +60,66 @@ Visit the [Add-on page](https://addons.mozilla.org/de/firefox/addon/markdown-to-
 | `*italic*` | `_italic_` |
 | `[Link](url)` | `"Link":url` |
 | ``` `code` ``` | `@code@` |
+| ` ```code``` ` | `bc. code` |
 | `> quote` | `bq. quote` |
+| Tables | Textile tables with alignment |
 
 ## Development
 
-### Building the Extension
+### Build System
 
-1. Install web-ext:
-   ```
-   npm install -g web-ext
-   ```
+The project includes a comprehensive build script for version management and packaging:
 
-2. Validate the extension:
-   ```
-   web-ext lint
-   ```
+#### Quick Start
+```bash
+# Install web-ext globally (if not already installed)
+npm install -g web-ext
 
-3. Build the extension:
-   ```
-   web-ext build
-   ```
+# Build with patch version increment (1.0 → 1.0.1)
+npm run build
+
+# Build with minor version increment (1.0.1 → 1.1.0)
+npm run build:minor
+
+# Build with major version increment (1.1.0 → 2.0.0)
+npm run build:major
+
+# Set specific version
+node build.js --version=2.5.3
+```
+
+#### Available Scripts
+- `npm run build` - Increment patch version and build
+- `npm run build:minor` - Increment minor version and build
+- `npm run build:major` - Increment major version and build
+- `npm run lint` - Validate extension with web-ext lint
+- `npm run start` - Run extension in Firefox for testing
+- `npm run package` - Build package without version bump
+
+#### Build Process
+The build script automatically:
+1. **Updates version** in `manifest.json`
+2. **Runs web-ext lint** to validate extension
+3. **Builds extension package** (.zip file in `web-ext-artifacts/`)
+4. **Creates git tag** for the version
+5. **Shows next steps** for committing and pushing
+
+#### Example Workflow
+```bash
+# Make your changes, then:
+npm run build:minor      # Updates version and builds
+git add .
+git commit -m "Release v1.1.0"
+git push && git push --tags
+```
+
+### Manual Commands
+If you prefer to use web-ext directly:
+```bash
+web-ext lint --source-dir=./markdown-to-textile
+web-ext build --source-dir=./markdown-to-textile
+web-ext run --source-dir=./markdown-to-textile
+```
 
 ### Extension Structure
 

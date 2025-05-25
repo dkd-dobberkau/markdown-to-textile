@@ -1,0 +1,27 @@
+{
+  "name": "markdown-to-textile-converter",
+  "version": "1.0.0",
+  "description": "Browser extension that converts Markdown text to Textile format",
+  "scripts": {
+    "build": "node build.js",
+    "build:patch": "node build.js --patch",
+    "build:minor": "node build.js --minor", 
+    "build:major": "node build.js --major",
+    "lint": "web-ext lint --source-dir=./markdown-to-textile",
+    "start": "web-ext run --source-dir=./markdown-to-textile",
+    "package": "web-ext build --source-dir=./markdown-to-textile --artifacts-dir=./markdown-to-textile/web-ext-artifacts --overwrite-dest"
+  },
+  "keywords": [
+    "markdown",
+    "textile",
+    "converter",
+    "browser-extension",
+    "webextension"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
