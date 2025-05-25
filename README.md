@@ -92,6 +92,8 @@ node build.js --version=2.5.3
 - `npm run build` - Increment patch version and build
 - `npm run build:minor` - Increment minor version and build
 - `npm run build:major` - Increment major version and build
+- `npm test` - Run conversion tests with example Markdown
+- `npm run test:interactive` - Interactive testing mode
 - `npm run lint` - Validate extension with web-ext lint
 - `npm run start` - Run extension in Firefox for testing
 - `npm run package` - Build package without version bump
@@ -120,6 +122,25 @@ web-ext lint --source-dir=./markdown-to-textile
 web-ext build --source-dir=./markdown-to-textile
 web-ext run --source-dir=./markdown-to-textile
 ```
+
+### Testing
+
+The project includes comprehensive test examples and a test runner:
+
+```bash
+# Run all conversion tests
+npm test
+
+# Interactive testing mode
+npm run test:interactive
+
+# View test examples
+cat test-examples.md
+```
+
+Test files:
+- `test-examples.md` - Comprehensive Markdown examples for testing
+- `test-runner.js` - Automated test runner with expected results
 
 ### Extension Structure
 
