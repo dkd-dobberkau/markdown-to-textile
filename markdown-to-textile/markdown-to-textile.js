@@ -47,9 +47,76 @@ class MarkdownToTextile {
       // Strikethrough
       { pattern: /~~(.+?)~~/g, replacement: '-$1-' },
       
-      // Tables - this is simplified and handles basic tables
-      { pattern: /\|(.+)\|/g, replacement: '|$1|' },
+      // Tables - convert markdown tables to textile format
+      { pattern: /^\|[^\n]*\|(?:\n\|[\s\-\:\|]*\|)?(?:\n\|[^\n]*\|)*/gm, replacement: (match) => this.convertTable(match) },
     ];
+  }
+  
+  /**
+   * Convert markdown table to textile format
+   * @param {string} markdownTable - The markdown table text
+   * @return {string} - The converted textile table
+   */
+  convertTable(markdownTable) {
+    const lines = markdownTable.trim().split('\n').filter(line => line.trim());
+    
+    if (lines.length < 2) {
+      // Not a proper table, return as-is
+      return markdownTable;
+    }
+    
+    const headerRow = lines[0];
+    let dataStartIndex = 1;
+    let alignments = [];
+    
+    // Check if second line is a separator
+    if (lines[1] && /^\|[\s\-\:]+\|$/.test(lines[1])) {
+      const separatorRow = lines[1];
+      dataStartIndex = 2;
+      
+      // Parse alignment from separator
+      alignments = separatorRow.split('|').slice(1, -1).map(sep => {
+        const trimmed = sep.trim();
+        if (trimmed.startsWith(':') && trimmed.endsWith(':')) return 'center';
+        if (trimmed.endsWith(':')) return 'right';
+        return 'left'; // default
+      });
+    }
+    
+    const dataRows = lines.slice(dataStartIndex);
+    
+    // Parse header
+    const headers = headerRow.split('|').slice(1, -1).map(h => h.trim());
+    
+    // If no alignments parsed, default to left
+    if (alignments.length === 0) {
+      alignments = headers.map(() => 'left');
+    }
+    
+    let result = '';
+    
+    // Header row with textile formatting
+    result += '|' + headers.map((header, i) => {
+      const align = alignments[i] || 'left';
+      if (align === 'center') return `=. ${header}`;
+      if (align === 'right') return `>. ${header}`;
+      return `_. ${header}`; // left-aligned header
+    }).join('|') + '|\n';
+    
+    // Data rows
+    dataRows.forEach(row => {
+      if (row.trim()) {
+        const cells = row.split('|').slice(1, -1).map(c => c.trim());
+        result += '|' + cells.map((cell, i) => {
+          const align = alignments[i] || 'left';
+          if (align === 'center') return `=. ${cell}`;
+          if (align === 'right') return `>. ${cell}`;
+          return cell; // left-aligned (default)
+        }).join('|') + '|\n';
+      }
+    });
+    
+    return result.trim();
   }
   
   /**

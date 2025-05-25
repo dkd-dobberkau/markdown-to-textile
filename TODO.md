@@ -5,7 +5,7 @@
 ### Conversion Accuracy
 
 - [x] Add newlines after Textile headlines for better rendering
-- [ ] Fix incomplete table conversion (currently partially implemented at line 51)
+- [x] Fix incomplete table conversion (currently partially implemented at line 51)
 - [ ] Fix code blocks - should generate Textile `bc.` syntax instead of HTML
 - [ ] Add support for nested lists with proper indentation levels
 - [ ] Implement footnotes conversion
